@@ -1,0 +1,172 @@
+{
+  "domain-intelligence": {
+    "title": "Domain Intelligence & Attack Surface Recon",
+    "discipline": "Reconnaissance & OSINT",
+    "summary": "A progressive passive-to-active domain mapping pipeline for identifying perimeter assets without premature target contact.",
+    "description": "This workflow outlines how analysts begin with an authorized apex domain, systematically discover related infrastructure through passive certificate transparency, search aggregators, recursive DNS correlation, and asset inventory feeds.",
+    "methodology": "Phased reconnaissance: Start with strictly passive OSINT sources to avoid alert triggers, then correlate findings through graph engines, and finally validate live internet telemetry without invasive active packet sweeps.",
+    "steps": [
+      {
+        "stage": "01. Passive Search Scraping",
+        "description": "Aggregate indexed public records, search engine results, exposed employee contact points, and public virtual host records.",
+        "dataOutput": "Raw domain mentions, employee email formats, and initial third-party service provider references.",
+        "authorizedScope": "Entirely passive. No packets sent directly to target infrastructure."
+      },
+      {
+        "stage": "02. High-Speed Subdomain Enumeration",
+        "description": "Query passive DNS providers, Certificate Transparency (CT) logs, and passive threat intelligence feeds to discover subdomains.",
+        "dataOutput": "List of valid fully qualified domain names (FQDNs).",
+        "authorizedScope": "Passive queries against public log providers."
+      },
+      {
+        "stage": "03. Graph-Based Network Mapping",
+        "description": "Correlate discovered subdomains against ASN allocations, IP ranges, reverse DNS pointers, and infrastructure ownership records.",
+        "dataOutput": "Structured infrastructure graph mapping subdomains to autonomous systems and IP blocks.",
+        "authorizedScope": "Passive and authorized DNS resolution queries."
+      },
+      {
+        "stage": "04. Recursive Asset Discovery",
+        "description": "Execute recursive asset mapping across cloud storage buckets, open redirects, virtual hosts, and perimeter services within verified target scope.",
+        "dataOutput": "Comprehensive asset map including cloud resources, web applications, and network services.",
+        "authorizedScope": "Verified target scope only."
+      },
+      {
+        "stage": "05. Historical Telemetry & Exposure Check",
+        "description": "Cross-reference target IP addresses and hostnames against Shodan's global sensor index to inspect banner histories and known CVE exposures.",
+        "dataOutput": "Exposed port profiles, historical service banners, SSL certificate fingerprints, and open protocol listings.",
+        "authorizedScope": "Queries against pre-indexed Shodan telemetry database."
+      }
+    ],
+    "defensiveMitigation": "Defenders should monitor Certificate Transparency logs in real time (e.g. using Certspotter/Certstream), audit public DNS zones for stale CNAME pointers (subdomain takeover mitigation), and maintain an active EASM inventory."
+  },
+  "network-discovery": {
+    "title": "Network Perimeter Discovery & Service Auditing",
+    "discipline": "Network Security & Vulnerability Assessment",
+    "summary": "High-efficiency network auditing: from rapid asynchronous port sweeping to deep NSE script and template verification.",
+    "description": "Designed for authorized lab networks and internal enterprise perimeter reviews. Combines fast asynchronous port enumeration with precision protocol fingerprinting and template-based vulnerability assessment.",
+    "methodology": "Two-stage scanning: High-rate raw SYN discovery sweeps identify active ports across large CIDRs, followed by low-rate stateful service versioning and targeted CVE template checks.",
+    "steps": [
+      {
+        "stage": "01. Perimeter Port Sweeping",
+        "description": "Perform an initial fast asynchronous sweep across all 65,535 TCP ports to isolate responsive host endpoints within authorized subnets.",
+        "dataOutput": "List of active IP:port pairs across the target range.",
+        "authorizedScope": "Explicitly authorized test network or internal IP block."
+      },
+      {
+        "stage": "02. Stateful Service & Version Fingerprinting",
+        "description": "Perform precise TCP connect handshakes, protocol negotiation, banner grabs, and default Nmap Scripting Engine (NSE) checks on open ports.",
+        "dataOutput": "Detailed service versions, operating system TCP/IP stack fingerprints, and protocol parameters.",
+        "authorizedScope": "Target hosts confirmed open in Phase 01."
+      },
+      {
+        "stage": "03. Targeted Vulnerability Template Auditing",
+        "description": "Execute targeted Nuclei templates and Nmap vuln scripts matching detected software versions to verify whether unpatched security flaws are exposed.",
+        "dataOutput": "Validated vulnerability findings with severity ratings and CVE references.",
+        "authorizedScope": "Identified services and ports only."
+      }
+    ],
+    "defensiveMitigation": "Implement strict firewall egress/ingress filtering, close unused ports, enforce zero-trust network access (ZTNA), and run continuous internal port audits to detect rogue services."
+  },
+  "digital-forensics": {
+    "title": "Comprehensive Digital Forensics & Incident Response",
+    "discipline": "Digital Forensics & Incident Response",
+    "summary": "End-to-end incident response triage: from volatile memory dump extraction to dead-disk artifact carving and timeline analysis.",
+    "description": "Standardized operating procedure for forensic analysts triaging compromised hosts. Combines fast live-response artifact collection with deep offline memory parsing and filesystem timeline reconstruction.",
+    "methodology": "Order of Volatility: Capture volatile RAM first before shutting down or isolating endpoints. Extract critical forensic triage artifacts before full disk imaging. Analyze artifacts offline to preserve chain of custody.",
+    "steps": [
+      {
+        "stage": "01. Volatile Memory Extraction & Process Triage",
+        "description": "Capture volatile RAM image and analyze running processes (pslist/pstree), active network sockets (netscan), and injected memory regions (malfind).",
+        "dataOutput": "Identified malicious PIDs, injected memory offsets, C2 network connections, and unlinked rootkit processes.",
+        "authorizedScope": "Compromised host in incident response investigation."
+      },
+      {
+        "stage": "02. Fast Triage Artifact Parsing",
+        "description": "Execute targeted collection of high-value Windows artifacts (MFT, Registry Hives, Event Logs, Prefetch, Amcache, Shimcache) using KAPE.",
+        "dataOutput": "Processed CSV reports of recent execution, USB mounts, user logins, and file modifications.",
+        "authorizedScope": "Forensic image or live endpoint under investigation."
+      },
+      {
+        "stage": "03. Static Malware & Binary Inspection",
+        "description": "Extract suspicious binaries, DLLs, and dropped files identified in memory or triage for static header analysis and anomaly detection.",
+        "dataOutput": "Suspicious API imports, section entropy scores, embedded compiler signatures, and MITRE ATT&CK technique mappings.",
+        "authorizedScope": "Isolated forensic laboratory."
+      },
+      {
+        "stage": "04. Deep Filesystem & Timeline Reconstruction",
+        "description": "Import disk images into Autopsy to build an end-to-end forensic timeline correlating user activity, web history, file downloads, and registry modifications.",
+        "dataOutput": "Comprehensive chronological incident timeline showing initial infection vector, lateral movement, and data staging.",
+        "authorizedScope": "Preserved forensic disk image (E01/RAW)."
+      }
+    ],
+    "defensiveMitigation": "Enforce centralized endpoint telemetry logging (Sysmon/Wazuh), enable PowerShell script block logging, configure Windows Defender Credential Guard, and isolate suspicious hosts via network containment."
+  },
+  "web-security-assessment": {
+    "title": "Web Application Security & API Assessment",
+    "discipline": "Web Security & Penetration Testing",
+    "summary": "Structured web application assessment: from route discovery to parameter fuzzing, traffic interception, and vulnerability verification.",
+    "description": "Methodological security testing for web applications and REST/GraphQL APIs within an authorized assessment scope. Moves systematically from surface discovery to parameter mining and authenticated testing.",
+    "methodology": "Gray-box methodology: Map all public and authenticated endpoints, intercept and inspect HTTP traffic flow, discover hidden parameter inputs, and verify security controls using custom templates.",
+    "steps": [
+      {
+        "stage": "01. Content & Route Discovery",
+        "description": "Enumerate directories, unlinked API endpoints, backup files, and administrative panels using high-speed concurrent wordlist testing.",
+        "dataOutput": "Discovered URL hierarchy, administrative endpoints, and unprotected static files.",
+        "authorizedScope": "Explicitly authorized web application hostname."
+      },
+      {
+        "stage": "02. Traffic Interception & Request Tampering",
+        "description": "Route browser and automated testing traffic through an intercepting proxy to inspect request headers, session tokens, and API payload structures.",
+        "dataOutput": "Full HTTP/S transaction log with annotated endpoints and authentication tokens.",
+        "authorizedScope": "Target application within testing scope."
+      },
+      {
+        "stage": "03. Hidden Parameter Fuzzing",
+        "description": "Fuzz query parameters and JSON payloads on sensitive endpoints to discover hidden administrative flags, debug modes, or injection reflection points.",
+        "dataOutput": "Discovered undocumented parameter names and input reflection behavior.",
+        "authorizedScope": "Target endpoints identified in Phase 01/02."
+      },
+      {
+        "stage": "04. Automated Security Template Verification",
+        "description": "Execute targeted Nuclei templates for web vulnerabilities (XSS, SQLi, SSRF, CORS misconfigurations, outdated libraries) against all mapped endpoints.",
+        "dataOutput": "Verified vulnerability findings with reproduction steps and HTTP proof-of-concept logs.",
+        "authorizedScope": "Target application within testing scope."
+      }
+    ],
+    "defensiveMitigation": "Implement parameterized database queries, strict Content Security Policy (CSP), automated dependency vulnerability scanning in CI/CD pipelines, and secure CORS headers."
+  },
+  "active-directory-auditing": {
+    "title": "Active Directory & Identity Hygiene Auditing",
+    "discipline": "Active Directory Security",
+    "summary": "Domain security auditing: from privilege graph analysis to credential hygiene verification and lateral movement mitigation.",
+    "description": "Designed for enterprise internal security audits. Discovers unintended delegation paths, excessive ACL permissions, stale accounts, and weak authentication protocols across on-premises Active Directory and hybrid Entra ID.",
+    "methodology": "Identity-first defense: Map the full graph of domain trusts and permissions to find non-obvious paths to Domain Admin, then verify credential hygiene without modifying domain state.",
+    "steps": [
+      {
+        "stage": "01. Permission Graph Mapping",
+        "description": "Collect domain session, ACL, and group membership telemetry to construct an interactive Neo4j graph of all attack paths to Tier 0 assets.",
+        "dataOutput": "Visual graph identifying shortest attack paths to Domain Admins and critical security groups.",
+        "authorizedScope": "Authorized enterprise domain network."
+      },
+      {
+        "stage": "02. Protocol & Credential Hygiene Verification",
+        "description": "Audit Kerberos delegation configurations, check for Kerberoastable service accounts with weak SPNs, and test protocol security policies.",
+        "dataOutput": "Inventory of unconstrained delegation hosts, accounts susceptible to Kerberoasting, and weak encryption types.",
+        "authorizedScope": "Authorized enterprise domain."
+      },
+      {
+        "stage": "03. Memory Credential Exposure Audit",
+        "description": "In controlled lab workstations, verify whether LSASS protection, Credential Guard, and Restricted Admin modes successfully prevent credential dumping.",
+        "dataOutput": "Verification of endpoint credential protection effectiveness against LSASS scraping.",
+        "authorizedScope": "Designated test workstations only."
+      },
+      {
+        "stage": "04. Password Robustness & Policy Testing",
+        "description": "Perform offline password strength auditing against extracted domain password hashes to identify shared, weak, or breached passwords across the organization.",
+        "dataOutput": "Report on password policy compliance, weak password percentages, and common pattern usage without exposing plaintext values.",
+        "authorizedScope": "Authorized offline assessment of enterprise domain hash dump."
+      }
+    ],
+    "defensiveMitigation": "Implement a tiered administration model (Tier 0/1/2), eliminate unconstrained Kerberos delegation, enforce Protected Users security group for privileged accounts, and deploy Windows Defender Credential Guard."
+  }
+}

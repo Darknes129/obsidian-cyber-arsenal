@@ -1,0 +1,1071 @@
+{
+  "osintgram": {
+    "tagline": "CLI modular para análisis de perfiles e inteligencia de fuentes abiertas en Instagram.",
+    "description": "Osintgram proporciona una interfaz de shell modular para realizar análisis autorizado de inteligencia de fuentes abiertas (OSINT) en perfiles de Instagram seleccionados, extrayendo seguidores, metadados, ubicaciones y métricas de interacción a través de solicitudes legítimas de API.",
+    "capabilities": [
+      "Extracción de biografía, identificador y metadados básicos de perfiles objetivo",
+      "Análisis de redes de seguidores/seguidos y conexiones compartidas",
+      "Recopilación de descripciones de fotos, marcas de tiempo y usuarios etiquetados",
+      "Análisis de ubicaciones geográficas etiquetadas en publicaciones"
+    ],
+    "useCases": [
+      "Investigación OSINT para detección de fraudes y verificación de identidades",
+      "Auditoría de huella digital para protección de ejecutivos y VIPs",
+      "Investigación académica autorizada en grafos de redes sociales"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip",
+      "Credenciales de sesión de Instagram"
+    ],
+    "installationNotes": "Requiere configurar credenciales válidas en config/credentials.ini antes de iniciar la shell interactiva.",
+    "quickStartNote": "Inicia una shell de comandos interactiva con subcomandos integrados como 'info', 'photodes', 'captions'.",
+    "commands": [
+      {
+        "title": "Iniciar sesión interactiva",
+        "description": "Inicializa la sesión autenticada y solicita subcomandos interactivos."
+      },
+      {
+        "title": "Exportar lista de seguidores",
+        "description": "Recopila y almacena los seguidores en el directorio de salida."
+      }
+    ]
+  },
+  "osintsearch": {
+    "tagline": "Agregador de búsqueda federada multimotor para registros públicos y OSINT.",
+    "description": "OSINTSearch consolida búsquedas de datos públicos sobre registros de dominio, índices de nombres de usuario, filtraciones de correo y registros corporativos en una interfaz unificada.",
+    "capabilities": [
+      "Consultas consolidadas en registros y bases de datos públicas",
+      "Cruce de Whois de dominio, histórico DNS y números de sistema autónomo (ASN)",
+      "Verificación de disponibilidad y existencia de perfiles de usuario"
+    ],
+    "useCases": [
+      "Investigación inicial de antecedentes y clasificación en fases de reconocimiento",
+      "Verificación de afiliaciones corporativas y registros mercantiles públicos"
+    ],
+    "requirements": [
+      "Navegador web moderno"
+    ]
+  },
+  "revealer": {
+    "tagline": "Servicio de correlación de identidades y descubrimiento de huella digital online.",
+    "description": "Revealer permite a los analistas rastrear identidades digitales, números de teléfono y alias en fuentes de datos públicas indexadas, apoyando la atribución de ciberdelitos y detección de fraudes.",
+    "capabilities": [
+      "Resolución de operadora telefónica y tipo de línea",
+      "Correlación de registros públicos con atributos de identidad",
+      "Descubrimiento de identificadores de perfil entre diferentes plataformas"
+    ],
+    "useCases": [
+      "Descubrimiento de números de teléfono e identidades en investigaciones autorizadas",
+      "Auditoría de exposición personal y huella digital pública"
+    ],
+    "requirements": [
+      "Navegador web moderno"
+    ]
+  },
+  "tookie-osint": {
+    "tagline": "Framework automatizado de OSINT para rastreo de nombres de usuario y huellas digitales.",
+    "description": "tookie-osint automatiza la enumeración de alias y perfiles en cientos de plataformas web, identificando cuentas asociadas y correlacionando huellas digitales públicas.",
+    "capabilities": [
+      "Enumeración simultánea de nombres de usuario en decenas de redes sociales",
+      "Validación de respuestas HTTP y reducción de falsos positivos",
+      "Exportación de informes estructurados para expedientes de investigación"
+    ],
+    "useCases": [
+      "Reconocimiento de identidad mediante fuentes abiertas en evaluaciones autorizadas",
+      "Auditoría de superficie de exposición personal y cuentas abandonadas"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip",
+      "Git"
+    ],
+    "installationNotes": "Ejecutar dentro de un entorno virtual de Python para evitar conflictos de dependencias.",
+    "quickStartNote": "Ejecuta la enumeración sobre el nombre de usuario especificado en todos los servicios registrados.",
+    "commands": [
+      {
+        "title": "Verificar nombre de usuario en plataformas",
+        "description": "Comprueba la existencia del perfil en sitios web y comunidades indexadas."
+      }
+    ]
+  },
+  "smartimage": {
+    "tagline": "Utilidad forense de búsqueda inversa y verificación visual de imágenes.",
+    "description": "SmartImage automatiza consultas simultáneas de búsqueda inversa en múltiples motores visuales (Google, Yandex, Bing, TinEye), facilitando la identificación del origen de fotos y detección de manipulaciones.",
+    "capabilities": [
+      "Búsqueda inversa concurrente en múltiples motores de inteligencia visual",
+      "Extracción preliminar de metadados y comparación de hashes perceptuales",
+      "Apoyo a la verificación de hechos y autenticidad de imágenes digitales"
+    ],
+    "useCases": [
+      "Verificación de autenticidad de fotografías en investigaciones OSINT",
+      "Identificación de reutilización de fotos de perfil en fraudes de identidad"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip"
+    ],
+    "installationNotes": "Puede requerir claves de API opcionales para motores de búsqueda específicos para evitar límites de tasa.",
+    "quickStartNote": "Carga la imagen objetivo y consulta los motores de búsqueda inversa compatibles.",
+    "commands": [
+      {
+        "title": "Ejecutar búsqueda inversa de imagen",
+        "description": "Inicia la búsqueda en lote en los servicios de imagen indexados."
+      }
+    ]
+  },
+  "bbot": {
+    "tagline": "Escáner recursivo de superficie de ataque e inteligencia modular para OSINT.",
+    "description": "BBOT (Bighuge BLT OSINT Tool) es un framework recursivo para mapeo de superficie de ataque y reconocimiento. Desarrollado para equipos defensivos y ofensivos, correlaciona subdominios, certificados, puertos abiertos, servidores web y recursos en la nube.",
+    "capabilities": [
+      "Descubrimiento recursivo impulsado por eventos para mapeo perimetral",
+      "Módulos para DNS, puertos, certificados SSL, buckets S3 y redirecciones abiertas",
+      "Exportación a formatos estructurados y visualización en grafos Neo4j",
+      "Mecanismo estricto de control de alcance para evitar pruebas fuera de perímetro"
+    ],
+    "useCases": [
+      "Gestión continua de la superficie de ataque externa (EASM)",
+      "Reconocimiento inicial en ejercicios autorizados de Red Team",
+      "Inventario exhaustivo de activos perimetrales expuestos a internet"
+    ],
+    "requirements": [
+      "Python 3.9+",
+      "pipx o pip",
+      "Entorno Linux/macOS"
+    ],
+    "installationNotes": "Se recomienda la instalación a través de pipx para aislar dependencias del sistema.",
+    "quickStartNote": "Ejecuta un escaneo con módulos pasivos y de subdominios en el dominio indicado.",
+    "commands": [
+      {
+        "title": "Escaneo básico de subdominios",
+        "description": "Recopila subdominios de forma pasiva utilizando fuentes públicas y registros de certificados."
+      },
+      {
+        "title": "Mapeo completo con resolución DNS",
+        "description": "Ejecuta escaneo profundo con comprobación de servidores web y resolución DNS."
+      }
+    ]
+  },
+  "geoaxis": {
+    "tagline": "Plataforma de inteligencia geoespacial y análisis de terreno para OSINT.",
+    "description": "GeoAxis combina capas geoespaciales, imágenes satelitales, elevación topográfica y datos abiertos para investigaciones de ubicación física e inteligencia geográfica (GEOINT).",
+    "capabilities": [
+      "Superposición de capas cartográficas e imágenes satelitales de alta resolución",
+      "Análisis de línea de visión y modelo digital de elevación (DEM)",
+      "Correlación de eventos con coordenadas geográficas y metadados de archivos multimedia"
+    ],
+    "useCases": [
+      "Geolocalización de imágenes y vídeos en investigaciones de fuentes abiertas",
+      "Análisis de situación de infraestructuras críticas e instalaciones físicas"
+    ],
+    "requirements": [
+      "Navegador web moderno con aceleración WebGL"
+    ]
+  },
+  "gods-eye-view": {
+    "tagline": "Visualizador 3D de inteligencia global y rastreo orbital de satélites en tiempo real.",
+    "description": "God's Eye View proporciona una representación tridimensional del planeta Tierra, rastreando satélites en órbita, posiciones de aeronaves (ADS-B) y tráfico marítimo para conciencia situacional global.",
+    "capabilities": [
+      "Renderizado 3D de trayectorias orbitales y predicción de sobrevuelo en zonas clave",
+      "Integración con flujos abiertos de telemetría de navegación aérea y marítima",
+      "Visualización de condiciones de luz solar y cobertura sensorial satelital"
+    ],
+    "useCases": [
+      "Planificación de ventanas de visibilidad satelital en operativos de campo",
+      "Conciencia situacional de transporte e infraestructuras logísticas globales"
+    ],
+    "requirements": [
+      "Navegador web moderno",
+      "GPU con compatibilidad WebGL"
+    ],
+    "quickStartNote": "Inicia el globo 3D interactivo en el puerto local predeterminado."
+  },
+  "trafficvision-live": {
+    "tagline": "Monitorización de cámaras de tráfico municipal y transmisiones de vídeo abiertas.",
+    "description": "Trafficvision.live indexa transmisiones públicas de cámaras de tráfico y carreteras proporcionadas por agencias de transporte, facilitando la verificación de rutas y condiciones locales en tiempo real.",
+    "capabilities": [
+      "Acceso ordenado a cámaras de tráfico municipales de acceso público",
+      "Filtrado por jurisdicción, autopista y coordenadas geográficas",
+      "Comprobación de condiciones climáticas y densidad de tráfico en vías clave"
+    ],
+    "useCases": [
+      "Verificación visual independiente de condiciones en áreas públicas",
+      "Apoyo en investigaciones de movilidad y logística autorizadas"
+    ],
+    "requirements": [
+      "Navegador web con capacidad de reproducción de vídeo"
+    ]
+  },
+  "horus": {
+    "tagline": "Monitor de noticias y agregador de inteligencia de fuentes abiertas.",
+    "description": "Horus recopila fuentes RSS, canales de avisos oficiales y noticias geopolíticas en un panel unificado para analistas de inteligencia de amenazas y seguridad corporativa.",
+    "capabilities": [
+      "Agregación de noticias mundiales con filtros por palabras clave de seguridad",
+      "Monitorización continua de alertas de crisis e interrupción de infraestructuras"
+    ],
+    "useCases": [
+      "Seguimiento de inteligencia de amenazas en tiempo real (Threat Intelligence)",
+      "Evaluación del impacto de eventos de crisis sobre operaciones corporativas"
+    ],
+    "requirements": [
+      "Node.js o Python (según versión)",
+      "Conexión a internet"
+    ]
+  },
+  "torbot": {
+    "tagline": "Rastreador asíncrono de inteligencia y enlaces en la red Tor (.onion).",
+    "description": "TorBot es un rastreador web asíncrono diseñado para indexar y clasificar servicios ocultos (.onion) en la red Tor, extrayendo títulos, metadados y correos electrónicos sin exponer la dirección IP del investigador.",
+    "capabilities": [
+      "Rastreo asíncrono de sitios ocultos .onion a través de túnel SOCKS5",
+      "Extracción de títulos de páginas, metadados y enlaces relacionados",
+      "Detección de claves públicas PGP y direcciones de carteras de criptomonedas",
+      "Generación de grafos visuales de navegación y relaciones entre nodos"
+    ],
+    "useCases": [
+      "Investigación autorizada de amenazas y foros clandestinos en la Dark Web",
+      "Monitorización de filtraciones de credenciales corporativas y datos sensibles"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "Servicio Tor activo (puerto SOCKS 9050 o 9150)"
+    ],
+    "installationNotes": "El servicio Tor debe estar ejecutándose localmente para enrutar las solicitudes vía SOCKS5.",
+    "quickStartNote": "Inicia el rastreador en el dominio .onion indicado a través del proxy Tor local.",
+    "commands": [
+      {
+        "title": "Rastrear servicio oculto .onion",
+        "description": "Ejecuta el crawler recopilando enlaces y metadados desde la URL raíz indicada."
+      }
+    ]
+  },
+  "mailaccess": {
+    "tagline": "Auditor de configuración de seguridad de correo para SPF, DKIM y DMARC.",
+    "description": "MailAccess evalúa las políticas de autenticación y seguridad en dominios de correo electrónico, verificando registros SPF, firmas DKIM y políticas DMARC para prevenir suplantaciones (spoofing) y ataques de phishing.",
+    "capabilities": [
+      "Auditoría automatizada de cumplimiento de políticas DMARC y registros SPF",
+      "Identificación de configuraciones débiles propensas a suplantación de identidad"
+    ],
+    "useCases": [
+      "Auditoría de higiene y robustez en la configuración de correo corporativo",
+      "Comprobación previa al despliegue estricto de directivas DMARC"
+    ],
+    "requirements": [
+      "Python 3+",
+      "Resolución de red DNS"
+    ]
+  },
+  "neko": {
+    "tagline": "Navegador web virtual aislado en contenedor Docker con transmisión WebRTC.",
+    "description": "Neko ejecuta un navegador web completo (Chromium o Firefox) en un contenedor Docker aislado, transmitiendo la interfaz de navegación mediante WebRTC al navegador del usuario, lo que permite inspeccionar enlaces maliciosos sin riesgo para la máquina local.",
+    "capabilities": [
+      "Aislamiento total en sandbox para análisis seguro de páginas web sospechosas",
+      "Transmisión fluida de baja latencia mediante WebRTC directamente en el navegador",
+      "Control de acceso multiusuario y soporte para sesiones compartidas",
+      "Destrucción instantánea de la sesión sin persistencia de amenazas en el sistema local"
+    ],
+    "useCases": [
+      "Apertura segura de enlaces sospechosos de phishing e investigación de sitios desconocidos",
+      "Navegación anónima OSINT separada de la estación de trabajo principal"
+    ],
+    "requirements": [
+      "Docker",
+      "Docker Compose"
+    ],
+    "installationNotes": "Requiere Docker Engine y configuración de puertos UDP para el tráfico WebRTC.",
+    "quickStartNote": "Despliega la instancia del navegador virtual en el puerto local 8080."
+  },
+  "session": {
+    "tagline": "Mensajería privada descentralizada con enrutamiento onion y cero metadatos.",
+    "description": "Session es una aplicación de mensajería cifrada de extremo a extremo y descentralizada. Opera sobre la red de nodos de servicio Oxen mediante enrutamiento onion, sin requerir números de teléfono ni correos electrónicos, garantizando máxima privacidad.",
+    "capabilities": [
+      "Cifrado de extremo a extremo basado en clave pública sin necesidad de número telefónico",
+      "Enrutamiento de mensajes a través de nodos intermedios (onion routing)",
+      "Arquitectura distribuida sin punto único de fallo ni servidores centrales de control",
+      "Grupos cifrados y temporizadores para autodestrucción de mensajes"
+    ],
+    "useCases": [
+      "Comunicaciones operativas seguras en labores críticas de respuesta a incidentes",
+      "Canal confidencial para recepción de alertas de seguridad y denuncias anónimas"
+    ],
+    "requirements": [
+      "Linux, macOS, Windows, Android o iOS"
+    ]
+  },
+  "hashcat": {
+    "tagline": "El recuperador de contraseñas y auditor de hashes más rápido del mundo.",
+    "description": "Hashcat es la herramienta líder para auditoría y recuperación de contraseñas mediante aceleración por GPU. Diseñado para investigadores de seguridad y peritos forenses, admite cientos de tipos de hashes (NTLM, Kerberos, bcrypt, SHA-512, contenedores cifrados y claves de archivo).",
+    "capabilities": [
+      "Motor altamente optimizado para tarjetas gráficas (OpenCL, CUDA, Metal)",
+      "Soporte para más de 300 algoritmos de hash y formatos de cifrado",
+      "Múltiples modalidades de ataque: diccionario, combinatorio, máscaras y reglas",
+      "Restauración de sesiones, puntos de control automáticos y pruebas de rendimiento"
+    ],
+    "useCases": [
+      "Auditoría de fortaleza de contraseñas en entornos corporativos y Active Directory",
+      "Recuperación forense de volúmenes cifrados y archivos protegidos en investigaciones judiciales"
+    ],
+    "requirements": [
+      "Controladores de GPU compatibles (NVIDIA CUDA / AMD ROCm / Apple Metal)",
+      "OpenCL"
+    ],
+    "installationNotes": "Asegúrese de instalar los controladores oficiales del fabricante de la GPU para habilitar la aceleración por hardware.",
+    "quickStartNote": "Ejecuta una prueba de rendimiento en todos los algoritmos de hash soportados.",
+    "commands": [
+      {
+        "title": "Ataque por diccionario sobre hashes NTLM",
+        "description": "Audita hashes NTLM de sistemas Windows utilizando una lista de palabras (wordlist)."
+      },
+      {
+        "title": "Ataque por máscara en contraseñas de 8 caracteres",
+        "description": "Prueba de forma exhaustiva combinaciones alfanuméricas de longitud definida."
+      },
+      {
+        "title": "Prueba de rendimiento de GPU (Benchmark)",
+        "description": "Mide la velocidad de procesamiento en hashes por segundo para cada algoritmo."
+      }
+    ],
+    "outputExplained": "Salida: Hash procesado seguido de la contraseña descifrada. Las métricas de estado muestran porcentaje completado, velocidad (H/s) y temperatura de la GPU.",
+    "troubleshooting": [
+      {
+        "issue": "No se detecta ningún dispositivo OpenCL/CUDA",
+        "resolution": "Instale los controladores propietarios de la GPU o utilice la opción -D 1 para forzar ejecución en CPU."
+      }
+    ]
+  },
+  "impacket": {
+    "tagline": "Colección de clases Python para interactuar con protocolos de red de bajo nivel.",
+    "description": "Impacket es una suite fundamental en Python para ingeniería de protocolos y pruebas autorizadas en entornos Windows. Proporciona control de bajo nivel para interactuar con SMB, MSRPC, Kerberos, WMI y NTLM.",
+    "capabilities": [
+      "Implementaciones de bajo nivel para protocolos de red (SMB1/2/3, MSRPC, NTLM, Kerberos)",
+      "Scripts para auditoría de autenticación y delegación de privilegios en Active Directory",
+      "Ejecución autorizada de comandos mediante WMI (wmiexec) y SMB (smbexec)",
+      "Extracción de secretos de dominio NTDS.dit mediante el protocolo DRSUAPI (secretsdump)"
+    ],
+    "useCases": [
+      "Evaluación de seguridad de mecanismos de autenticación NTLM y Kerberos",
+      "Auditoría de permisos de delegación e higiene de cuentas en Active Directory"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip"
+    ],
+    "quickStartNote": "Ejecuta el script de auditoría de secretos de dominio a través de DRSUAPI.",
+    "commands": [
+      {
+        "title": "Auditoría de secretos de dominio (SecretsDump)",
+        "description": "Extrae hashes NTLM y claves Kerberos de un controlador de dominio con credenciales de administrador."
+      },
+      {
+        "title": "Ejecución remota autorizada mediante WMI",
+        "description": "Ejecuta comandos en un host remoto sin transferir binarios ejecutables al disco."
+      }
+    ]
+  },
+  "nmap": {
+    "tagline": "Network Mapper — la herramienta de referencia para exploración y auditoría de redes.",
+    "description": "Nmap es un escáner de red indispensable diseñado para inventariar redes de ordenadores, detectar servicios en ejecución y versiones de daemons, identificar sistemas operativos mediante huella TCP/IP y comprobar vulnerabilidades con el motor Nmap Scripting Engine (NSE).",
+    "capabilities": [
+      "Escaneos sigilosos SYN (-sS), conexiones TCP (-sT), escaneos UDP (-sU) y SCTP",
+      "Detección remota de sistema operativo mediante análisis de pila TCP/IP",
+      "Identificación precisa de versiones de aplicaciones (-sV) con miles de firmas de protocolo",
+      "Más de 600 scripts de automatización en Lua mediante el Nmap Scripting Engine (NSE)"
+    ],
+    "useCases": [
+      "Inventario de activos de red y auditoría de línea base del perímetro de puertos abiertos",
+      "Validación de políticas de filtrado en firewalls perimetrales e internos",
+      "Detección de versiones obsoletas o sin parches de seguridad en auditorías de cumplimiento"
+    ],
+    "requirements": [
+      "Privilegios de socket crudo (root/Administrador para escaneos SYN)"
+    ],
+    "installationNotes": "Requiere privilegios de administrador para crear paquetes crudos en escaneos sigilosos SYN.",
+    "quickStartNote": "Ejecuta detección de versiones y scripts predeterminados en la máquina local (localhost).",
+    "commands": [
+      {
+        "title": "Escaneo estándar de servicios y scripts",
+        "description": "Examina los 1000 puertos TCP principales con scripts seguros y detección de versiones."
+      },
+      {
+        "title": "Escaneo rápido SYN en todos los puertos",
+        "description": "Inspecciona con rapidez los 65.535 puertos TCP en un equipo autorizado."
+      },
+      {
+        "title": "Auditoría con scripts de vulnerabilidades",
+        "description": "Evalúa los servicios web del objetivo mediante scripts de detección de CVEs conocidos."
+      }
+    ],
+    "outputExplained": "PORT STATE SERVICE VERSION: Indica el puerto y protocolo, estado (open, closed, filtered), nombre del servicio y versión identificada. 'Filtered' señala que un cortafuegos descarta los paquetes.",
+    "troubleshooting": [
+      {
+        "issue": "Permiso denegado al ejecutar escaneo SYN (-sS)",
+        "resolution": "Ejecute el comando con permisos de superusuario (sudo en Linux/macOS) o utilice el escaneo TCP Connect (-sT)."
+      }
+    ]
+  },
+  "shodan": {
+    "tagline": "Motor de búsqueda para dispositivos conectados a internet e inteligencia de perímetro.",
+    "description": "Shodan es un motor de búsqueda global que indexa de forma continua servidores, enrutadores, cámaras de seguridad, sistemas de control industrial (ICS/SCADA) y dispositivos IoT analizando sus respuestas de servicio (banners).",
+    "capabilities": [
+      "Consultas directas sobre telemetría mundial indexada sin enviar paquetes activos al objetivo",
+      "Filtros de búsqueda avanzados por puerto, organización, país, certificado SSL y tecnología",
+      "Monitorización continua de rangos de direcciones IP corporativas expuestas",
+      "Herramienta oficial de línea de comandos (CLI) y API REST completa"
+    ],
+    "useCases": [
+      "Mapeo pasivo de la exposición de activos y puertos abiertos de una entidad",
+      "Investigación sobre la propagación global de servicios vulnerables"
+    ],
+    "requirements": [
+      "Python 3+",
+      "Clave de API de Shodan"
+    ],
+    "installationNotes": "Requiere una clave de API obtenida en su perfil de Shodan para inicializar la CLI.",
+    "quickStartNote": "Inicializa la herramienta CLI de Shodan con su clave de API personal.",
+    "commands": [
+      {
+        "title": "Consultar información de una dirección IP",
+        "description": "Muestra los puertos abiertos, certificados y vulnerabilidades asociadas a la IP."
+      },
+      {
+        "title": "Buscar servicios de una organización",
+        "description": "Localiza servidores registrados a nombre de una empresa u organización concreta."
+      }
+    ]
+  },
+  "theharvester": {
+    "tagline": "Herramienta de recolección de correos, subdominios, IPs y nombres mediante fuentes abiertas.",
+    "description": "theHarvester es una herramienta esencial de reconocimiento en fases iniciales. Recopila correos electrónicos, nombres de empleados, subdominios, direcciones IP y URLs consultando decenas de fuentes públicas (buscadores, servidores PGP, Shodan, Bing).",
+    "capabilities": [
+      "Enumeración pasiva de subdominios y direcciones de correo electrónico corporativo",
+      "Integración con decenas de motores de búsqueda y fuentes de datos públicas",
+      "Resolución DNS opcional y exportación de resultados a formatos XML y JSON"
+    ],
+    "useCases": [
+      "Reconocimiento inicial y obtención de contactos en auditorías autorizadas",
+      "Comprobación de exposición involuntaria de credenciales y datos de contacto corporativo"
+    ],
+    "requirements": [
+      "Python 3.9+",
+      "pip"
+    ],
+    "quickStartNote": "Recopila correos y subdominios del dominio seleccionado mediante los motores indicados.",
+    "commands": [
+      {
+        "title": "Recolección pasiva en dominio objetivo",
+        "description": "Ejecuta búsquedas de correos y subdominios en las fuentes configuradas."
+      }
+    ]
+  },
+  "wazuh": {
+    "tagline": "Plataforma de código abierto para prevención, detección y respuesta ante amenazas (XDR y SIEM).",
+    "description": "Wazuh es una solución integral de seguridad que aúna capacidades de XDR (Extended Detection and Response) y SIEM. Monitoriza puntos finales, analiza registros, detecta intrusiones, valida el cumplimiento normativo y responde ante incidentes en tiempo real.",
+    "capabilities": [
+      "Supervisión de integridad de archivos (FIM) con alertas instantáneas de cambios",
+      "Detección de intrusiones, análisis de vulnerabilidades y desvíos de configuración de seguridad",
+      "Agentes de telemetría ligeros para Linux, Windows, macOS, contenedores Docker y Kubernetes",
+      "Mecanismo de respuesta activa para contener amenazas detectadas de manera automática",
+      "Cuadros de mando para cumplimiento de estándares PCI DSS, HIPAA, GDPR y CIS Benchmarks"
+    ],
+    "useCases": [
+      "Centro de operaciones de seguridad (SOC) para monitorización y detección de incidentes",
+      "Auditoría continua de cumplimiento normativo e integridad de servidores críticos"
+    ],
+    "requirements": [
+      "Linux (Ubuntu/Debian/RHEL) para el servidor central",
+      "4GB+ de RAM"
+    ],
+    "quickStartNote": "Ejecuta el asistente de instalación para desplegar la pila completa de Wazuh Server.",
+    "commands": [
+      {
+        "title": "Verificar estado del agente local",
+        "description": "Comprueba que el agente de Wazuh esté conectado y reportando telemetría al servidor."
+      }
+    ]
+  },
+  "pestudio": {
+    "tagline": "Herramienta especializada en análisis estático y clasificación rápida de ejecutables sospechosos.",
+    "description": "pestudio permite inspeccionar ejecutables de Windows (PE) sin ejecutarlos. Analiza cabeceras, librerías importadas, funciones de la API, cadenas de texto, recursos incrustados y anomalías para identificar amenazas potenciales.",
+    "capabilities": [
+      "Identificación de funciones importadas sospechosas y anomalías en cabeceras PE",
+      "Cálculo de entropía en secciones para detectar empaquetadores (packers) y cifrado",
+      "Extracción de indicadores de compromiso (IoCs) y contraste con firmas de malware",
+      "Mapeo de comportamientos sospechosos con la matriz MITRE ATT&CK"
+    ],
+    "useCases": [
+      "Clasificación inicial de ficheros ejecutables en respuesta a incidentes",
+      "Análisis estático de muestras de malware en entornos de laboratorio seguros"
+    ],
+    "requirements": [
+      "Windows o Wine en Linux"
+    ],
+    "quickStartNote": "Inicie pestudio y arrastre el archivo ejecutable para comenzar la inspección estática."
+  },
+  "maltego": {
+    "tagline": "Plataforma gráfica interactiva para análisis de enlaces e investigación de inteligencia.",
+    "description": "Maltego es una herramienta líder en la industria para el análisis visual de enlaces y correlación de inteligencia de fuentes abiertas. A través de su catálogo de transformaciones (transforms), relaciona personas, correos, dominios, direcciones IP, infraestructura y redes sociales en grafos de nodos interactivos.",
+    "capabilities": [
+      "Visualización de relaciones en grafos interactivos que soportan miles de entidades",
+      "Integración con decenas de proveedores de inteligencia (Shodan, VirusTotal, WhoisXML)",
+      "Mapeo de vínculos entre registros DNS, WHOIS, bloques IP y carteras de criptomonedas",
+      "Generación de informes detallados para presentación ejecutiva y documentación pericial"
+    ],
+    "useCases": [
+      "Investigación visual de redes de ciberdelincuencia y mapeo de infraestructuras adversarias",
+      "Auditoría gráfica de la superficie de ataque y relaciones de organizaciones complejas"
+    ],
+    "requirements": [
+      "Java Runtime Environment (JRE 11+)"
+    ],
+    "quickStartNote": "Inicia la interfaz gráfica de Maltego; seleccione la edición Community o active su licencia."
+  },
+  "spiderfoot": {
+    "tagline": "Herramienta de automatización de OSINT e inteligencia contra amenazas en el perímetro.",
+    "description": "SpiderFoot automatiza la obtención de inteligencia sobre objetivos especificados (direcciones IP, dominios, sistemas autónomos, correos o nombres de usuario), integrando más de 200 fuentes de datos públicas para construir un perfil de amenazas integral.",
+    "capabilities": [
+      "Más de 200 módulos de recolección de datos y proveedores de Threat Intelligence",
+      "Descubrimiento de credenciales filtradas, certificados caducados y servicios mal configurados",
+      "Visualización interactiva basada en navegador con representación en grafos"
+    ],
+    "useCases": [
+      "Auditorías automatizadas de superficie de ataque en perímetros externos",
+      "Recolección rápida de inteligencia de amenazas previa a pruebas de penetración"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip"
+    ],
+    "quickStartNote": "Inicia el servidor web local de SpiderFoot en el puerto 5001.",
+    "commands": [
+      {
+        "title": "Iniciar servidor web de SpiderFoot",
+        "description": "Abre el panel de control web local para configurar escaneos automatizados."
+      }
+    ]
+  },
+  "recon-ng": {
+    "tagline": "Framework completo de reconocimiento e inteligencia con arquitectura modular.",
+    "description": "Recon-ng es un entorno integral de reconocimiento de fuentes abiertas con una interfaz basada en comandos similar a Metasploit. Incorpora una base de datos relacional para vincular dominios, compañías, contactos y credenciales recopiladas.",
+    "capabilities": [
+      "Interfaz de consola interactiva con gestión centralizada de claves de API",
+      "Base de datos SQLite integrada para almacenar y relacionar entidades",
+      "Repositorio de módulos que integran los principales servicios de inteligencia"
+    ],
+    "useCases": [
+      "Reconocimiento estructurado de grandes corporaciones en pruebas autorizadas",
+      "Centralización y consulta de hallazgos OSINT en una única base de datos"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip"
+    ],
+    "quickStartNote": "Abre la consola interactiva de Recon-ng.",
+    "commands": [
+      {
+        "title": "Iniciar consola de Recon-ng",
+        "description": "Carga la consola de gestión de módulos y espacios de trabajo (workspaces)."
+      }
+    ]
+  },
+  "amass": {
+    "tagline": "Mapeo exhaustivo de superficies de ataque y descubrimiento de activos en grafos.",
+    "description": "OWASP Amass realiza reconocimiento de redes externas y descubrimiento de activos combinando técnicas de fuentes abiertas y resolución activa de DNS. Construye un grafo de infraestructura que conecta subdominios, ASN, rangos IP y bloques de encaminamiento.",
+    "capabilities": [
+      "Integración con decenas de fuentes pasivas de DNS y registros de transparencia de certificados",
+      "Fuerza bruta activa y permutación de nombres con soporte de resolución DNS masiva",
+      "Almacenamiento de relaciones de red en bases de datos de grafos para análisis posterior",
+      "Validación rigurosa de respuestas DNS para eliminar falsos positivos"
+    ],
+    "useCases": [
+      "Mapeo exhaustivo del perímetro externo de organizaciones complejas",
+      "Detección de activos olvidados o servidores desatendidos expuestos a internet"
+    ],
+    "requirements": [
+      "Go 1.20+ o binario precompilado"
+    ],
+    "quickStartNote": "Ejecuta enumeración pasiva de subdominios para el dominio objetivo.",
+    "commands": [
+      {
+        "title": "Enumeración pasiva de subdominios",
+        "description": "Obtiene nombres de subdominios sin enviar consultas directas al servidor DNS de la entidad."
+      },
+      {
+        "title": "Mapeo completo con resolución de ASN",
+        "description": "Relaciona subdominios descubiertos con direcciones IP y sistemas autónomos (ASN)."
+      }
+    ]
+  },
+  "subfinder": {
+    "tagline": "Herramienta de alta velocidad para descubrimiento pasivo de subdominios.",
+    "description": "Subfinder es una utilidad en Go desarrollada por ProjectDiscovery para la enumeración pasiva de subdominios. Diseñada para operar con rapidez, consulta exclusivamente fuentes pasivas y registros de certificados sin interactuar con el objetivo.",
+    "capabilities": [
+      "Descubrimiento pasivo ultrarrápido optimizado para pipelines de automatización",
+      "Integración con decenas de servicios de inteligencia públicos y privados",
+      "Formato de salida diseñado para encadenamiento mediante tuberías (pipes) en Unix"
+    ],
+    "useCases": [
+      "Fase inicial de descubrimiento de subdominios en programas de recompensas (Bug Bounty)",
+      "Recopilación ágil de subdominios en auditorías de seguridad perimetral"
+    ],
+    "requirements": [
+      "Go 1.21+ o binario precompilado"
+    ],
+    "quickStartNote": "Enumera subdominios de forma pasiva y muestra los resultados en la terminal.",
+    "commands": [
+      {
+        "title": "Enumeración pasiva básica",
+        "description": "Descubre subdominios del dominio indicado mediante consultas pasivas."
+      },
+      {
+        "title": "Salida limpia para tuberías de comandos",
+        "description": "Muestra únicamente los dominios encontrados para enviarlos fácilmente a Nuclei o httpx."
+      }
+    ]
+  },
+  "masscan": {
+    "tagline": "El escáner de puertos más rápido de internet — capaz de escanear todo IPv4 en minutos.",
+    "description": "Masscan es un escáner asíncrono de puertos TCP que genera paquetes SYN propios de forma independiente a la pila de red del sistema operativo. Con la infraestructura adecuada, puede analizar todo el espacio de direcciones IPv4 en cuestión de minutos.",
+    "capabilities": [
+      "Transmisión asíncrona de paquetes SYN de altísimo rendimiento",
+      "Sintaxis de opciones compatible con Nmap para facilitar su adopción",
+      "Escaneo aleatorio de direcciones para distribuir el tráfico uniformemente"
+    ],
+    "useCases": [
+      "Barrido rápido de puertos en grandes rangos de red corporativos (bloques /16 o /8)",
+      "Identificación veloz de puertos abiertos antes de auditorías minuciosas con Nmap"
+    ],
+    "requirements": [
+      "libpcap-dev",
+      "Privilegios de superusuario (root)"
+    ],
+    "installationNotes": "Requiere privilegios de root para generar paquetes SYN crudos mediante libpcap.",
+    "quickStartNote": "Escanea los puertos 80 y 443 en la subred autorizada a una tasa de 1000 paquetes por segundo.",
+    "commands": [
+      {
+        "title": "Escaneo rápido en subred local",
+        "description": "Comprueba puertos web en el rango autorizado con control de velocidad de emisión."
+      }
+    ]
+  },
+  "gobuster": {
+    "tagline": "Herramienta en Go de alto rendimiento para fuerza bruta en URIs, DNS y vhosts.",
+    "description": "Gobuster es una herramienta de línea de comandos en Go para realizar ataques de fuerza bruta rápidos sobre rutas y archivos web, subdominios DNS, hosts virtuales (vhosts) y buckets en la nube.",
+    "capabilities": [
+      "Modos dedicados: dir (directorios), dns (subdominios), vhost (análisis de cabecera Host), s3 (buckets)",
+      "Gestión de conexiones concurrentes para maximizar la velocidad de respuesta",
+      "Filtrado detallado por códigos de estado HTTP y longitud de contenido"
+    ],
+    "useCases": [
+      "Detección de paneles de administración ocultos, copias de seguridad y archivos sensibles",
+      "Identificación de hosts virtuales no documentados en servidores web compartidos"
+    ],
+    "requirements": [
+      "Go 1.20+ o binario precompilado"
+    ],
+    "quickStartNote": "Ejecuta enumeración de directorios en el servidor web usando una lista de palabras.",
+    "commands": [
+      {
+        "title": "Fuerza bruta de directorios web",
+        "description": "Busca rutas y archivos en el servidor web utilizando un diccionario de nombres comunes."
+      },
+      {
+        "title": "Descubrimiento de subdominios DNS",
+        "description": "Resuelve subdominios consultando servidores DNS con una lista de palabras."
+      }
+    ]
+  },
+  "rustscan": {
+    "tagline": "Escáner moderno de puertos en Rust con integración directa y automática hacia Nmap.",
+    "description": "RustScan es un escáner de puertos asíncrono desarrollado en Rust capaz de verificar 65.535 puertos en pocos segundos, canalizando automáticamente los puertos descubiertos hacia Nmap para identificación profunda de servicios.",
+    "capabilities": [
+      "Escaneo ultrarrápido de 65.535 puertos mediante arquitectura asíncrona",
+      "Paso transparente de puertos encontrados al motor de scripts de Nmap",
+      "Gestión adaptativa de sockets para no saturar las conexiones locales"
+    ],
+    "useCases": [
+      "Enumeración ágil de puertos en laboratorios de prácticas (CTF) y entornos autorizados",
+      "Aceleración de barridos iniciales de reconocimiento de puertos"
+    ],
+    "requirements": [
+      "Rust/Cargo o imagen Docker o binario precompilado"
+    ],
+    "quickStartNote": "Detecta puertos abiertos en el host y ejecuta Nmap con detección de servicios.",
+    "commands": [
+      {
+        "title": "Escaneo rápido integrado con Nmap",
+        "description": "Descubre puertos abiertos y ejecuta scripts de Nmap únicamente en dichos puertos."
+      }
+    ]
+  },
+  "nuclei": {
+    "tagline": "Escáner de vulnerabilidades rápido y adaptable basado en plantillas YAML sencillas.",
+    "description": "Nuclei es una herramienta de evaluación de seguridad basada en plantillas YAML mantenidas por la comunidad. Creado por ProjectDiscovery, permite detectar fallos conocidos, errores de configuración, vulnerabilidades de día cero recientes y malas prácticas en servicios web.",
+    "capabilities": [
+      "Más de 5.000 plantillas comunitarias continuamente actualizadas",
+      "Compatibilidad con protocolos: TCP, DNS, HTTP, SSL, File, WHOIS y Websockets",
+      "Rendimiento optimizado para escaneos masivos con muy baja tasa de falsos positivos",
+      "Filtrado selectivo por nivel de riesgo (info, low, medium, high, critical) y etiquetas"
+    ],
+    "useCases": [
+      "Comprobación ágil de vulnerabilidades críticas recién publicadas en toda la infraestructura",
+      "Integración de pruebas de seguridad automatizadas en cadenas de despliegue continuo (CI/CD)"
+    ],
+    "requirements": [
+      "Go 1.21+ o binario precompilado"
+    ],
+    "quickStartNote": "Actualiza las plantillas comunitarias y ejecuta un escaneo general en el objetivo.",
+    "commands": [
+      {
+        "title": "Escaneo de vulnerabilidades con plantillas actualizadas",
+        "description": "Comprueba el servidor objetivo contra el catálogo comunitario de pruebas de seguridad."
+      },
+      {
+        "title": "Filtrar por vulnerabilidades altas y críticas",
+        "description": "Ejecuta únicamente comprobaciones de riesgo severo para clasificación inmediata."
+      }
+    ]
+  },
+  "caido": {
+    "tagline": "Proxy de interceptación web moderno, liviano y de alto rendimiento escrito en Rust.",
+    "description": "Caido es una alternativa moderna a herramientas como Burp Suite. Construido en Rust, combina un servicio local de alto rendimiento con una interfaz web o de escritorio limpia, pensado para la auditoría de aplicaciones web y APIs.",
+    "capabilities": [
+      "Motor de proxy optimizado con consumo mínimo de memoria RAM",
+      "Intercepción y modificación precisa de peticiones HTTP/1.1 y HTTP/2",
+      "Herramientas integradas para repetición y automatización de pruebas",
+      "Soporte para flujos de trabajo colaborativos y despliegue en servidores remotos"
+    ],
+    "useCases": [
+      "Auditoría de seguridad en APIs REST, GraphQL y aplicaciones web modernas",
+      "Pruebas de fallos de control de acceso (IDOR/BOLA), inyecciones y lógica de negocio"
+    ],
+    "requirements": [
+      "Linux, macOS o Windows"
+    ],
+    "quickStartNote": "Inicie Caido, configure el certificado raíz en su navegador y acceda a la consola web."
+  },
+  "wfuzz": {
+    "tagline": "Fuzzer versátil para aplicaciones web orientado a descubrimiento de parámetros e inyecciones.",
+    "description": "Wfuzz es una herramienta clásica para pruebas de seguridad en aplicaciones web. Sustituye la clave FUZZ por elementos de diccionarios, facilitando la detección de parámetros ocultos, campos de formularios, cabeceras HTTP y endpoints de API.",
+    "capabilities": [
+      "Fuzzing simultáneo de múltiples parámetros (FUZZ, FUZ2Z) en una misma petición",
+      "Filtros avanzados por código HTTP, cantidad de líneas, palabras o caracteres recibidos",
+      "Compatibilidad con autenticación básica, NTLM y servidores proxy intermedios"
+    ],
+    "useCases": [
+      "Descubrimiento de parámetros ocultos en formularios y APIs (Parameter Mining)",
+      "Inyección de caracteres especiales para identificar fallos XSS y SQLi"
+    ],
+    "requirements": [
+      "Python 3+",
+      "pip",
+      "pycurl"
+    ],
+    "quickStartNote": "Ejecuta fuzzing en rutas web utilizando la lista de palabras indicada.",
+    "commands": [
+      {
+        "title": "Descubrir parámetros GET ocultos",
+        "description": "Prueba nombres de parámetros en una URL omitiendo respuestas con código 404."
+      }
+    ]
+  },
+  "metasploit-framework": {
+    "tagline": "El framework de pruebas de penetración y validación de seguridad más utilizado del mundo.",
+    "description": "Metasploit Framework ofrece un ecosistema completo para verificar vulnerabilidades, desarrollar exploits, evaluar defensas de red y ejecutar cargas útiles (payloads) autorizadas en entornos controlados.",
+    "capabilities": [
+      "Miles de módulos comprobados de explotación, escaneos auxiliares y post-explotación",
+      "Generador de payloads avanzados (Meterpreter) con comunicaciones cifradas",
+      "Consola interactiva (msfconsole) con gestión integrada de espacios de trabajo y base de datos",
+      "Automatización mediante scripts en Ruby y archivos de recursos (.rc)"
+    ],
+    "useCases": [
+      "Validación práctica de la explotabilidad de vulnerabilidades críticas en laboratorio",
+      "Simulación de adversarios y pruebas de respuesta ante incidentes en equipos defensivos"
+    ],
+    "requirements": [
+      "Linux, macOS o Windows",
+      "PostgreSQL (recomendado para la base de datos)"
+    ],
+    "quickStartNote": "Inicia la consola interactiva de Metasploit conectada a la base de datos local.",
+    "commands": [
+      {
+        "title": "Iniciar consola de Metasploit",
+        "description": "Carga el entorno de comandos y los módulos de Metasploit."
+      },
+      {
+        "title": "Verificar vulnerabilidad con módulo auxiliar",
+        "description": "Ejecuta comprobaciones no destructivas de versión y configuración en el servicio objetivo."
+      }
+    ]
+  },
+  "bloodhound": {
+    "tagline": "Análisis de grafos y rutas de ataque en entornos Active Directory y Azure/Entra ID.",
+    "description": "BloodHound utiliza teoría de grafos para representar y descubrir relaciones de permisos ocultas en entornos Active Directory y Azure/Entra ID. Identifica caminos de escalación imprevistos, permisos excesivos y malas configuraciones en listas de control de acceso (ACLs).",
+    "capabilities": [
+      "Visualización en grafos de relaciones entre usuarios, grupos, ordenadores y directivas",
+      "Detección automatizada de rutas de ataque hacia privilegios de Administrador de Dominio",
+      "Soporte para recopiladores de datos oficiales (SharpHound y AzureHound)",
+      "Ayuda a los administradores a identificar y revocar permisos excesivos de alto riesgo"
+    ],
+    "useCases": [
+      "Auditoría de arquitectura de seguridad e higiene de permisos en Active Directory",
+      "Mitigación proactiva de rutas de ataque y delegaciones peligrosas"
+    ],
+    "requirements": [
+      "Base de datos Neo4j",
+      "Node.js (para la interfaz clásica) o BloodHound CE"
+    ],
+    "quickStartNote": "Inicie el servicio Neo4j y arranque BloodHound para acceder a la consola gráfica de análisis.",
+    "commands": [
+      {
+        "title": "Iniciar BloodHound",
+        "description": "Abre la interfaz gráfica conectada a la base de datos de grafos de Active Directory."
+      }
+    ]
+  },
+  "mimikatz": {
+    "tagline": "Herramienta de investigación para extracción de credenciales en memoria en Windows.",
+    "description": "Creada por Benjamin Delpy, Mimikatz es una célebre utilidad de investigación que demuestra fallos de seguridad en la gestión de autenticación de Windows, extrayendo contraseñas en texto claro, hashes NTLM, tickets Kerberos y certificados directamente del proceso LSASS.",
+    "capabilities": [
+      "Extracción de contraseñas y hashes NTLM en memoria del proceso LSASS (sekurlsa::logonpasswords)",
+      "Manipulación de tickets Kerberos (Pass-the-Ticket, Golden Ticket, Silver Ticket)",
+      "Exportación de certificados y claves privadas marcadas como no exportables",
+      "Auditoría de subsistemas de autenticación en puestos de trabajo Windows"
+    ],
+    "useCases": [
+      "Demostración en laboratorio del riesgo de persistencia de credenciales en memoria",
+      "Auditoría forense de mecanismos de autenticación y mitigación de volcado de credenciales"
+    ],
+    "requirements": [
+      "Windows",
+      "Privilegios de Administrador / SYSTEM"
+    ],
+    "quickStartNote": "Inicia la consola interactiva de Mimikatz en una ventana de comandos con privilegios elevados.",
+    "commands": [
+      {
+        "title": "Auditoría de credenciales en memoria",
+        "description": "Habilita privilegios de depuración e inspecciona credenciales en LSASS en entorno de prueba."
+      }
+    ]
+  },
+  "peass-ng": {
+    "tagline": "Scripts para enumeración de vectores de escalada de privilegios (LinPEAS / WinPEAS).",
+    "description": "PEASS-ng (Privilege Escalation Awesome Scripts Suite) es una colección esencial de herramientas de auditoría local (LinPEAS para sistemas Linux/Unix y WinPEAS para Windows). Analiza permisos de archivos, procesos, servicios, tareas programadas y configuraciones para hallar vías de elevación de privilegios.",
+    "capabilities": [
+      "Detección de binarios SUID, permisos inseguros en sudoers y capacidades especiales de Linux",
+      "Inspección de servicios de Windows con rutas sin entrecomillar (Unquoted Paths) y claves Run",
+      "Codificación por colores para resaltar de inmediato los hallazgos más críticos",
+      "Ejecución en memoria sin requerir instalación permanente en el equipo evaluado"
+    ],
+    "useCases": [
+      "Auditoría de configuración y reducción de riesgos de escalada de privilegios en servidores",
+      "Inspección local tras incidentes o durante ejercicios formativos de laboratorio"
+    ],
+    "requirements": [
+      "Shell Bash en Linux o PowerShell/cmd en Windows"
+    ],
+    "quickStartNote": "Ejecuta el script de auditoría en Linux mostrando los hallazgos coloreados según su gravedad.",
+    "commands": [
+      {
+        "title": "Ejecutar auditoría local en Linux",
+        "description": "Examina permisos de archivos, configuraciones de sudo y parámetros del kernel en busca de fallos."
+      }
+    ]
+  },
+  "lazagne": {
+    "tagline": "Herramienta de código abierto para auditoría y recuperación de contraseñas almacenadas localmente.",
+    "description": "LaZagne es una utilidad en Python orientada a recuperar contraseñas guardadas en el sistema local, tales como credenciales en navegadores web, clientes de correo electrónico, gestores de bases de datos, redes Wi-Fi y clientes de mensajería.",
+    "capabilities": [
+      "Recuperación de credenciales en decenas de aplicaciones comunes (Chrome, Firefox, Outlook, FileZilla)",
+      "Módulos específicos para entornos Windows, Linux y macOS",
+      "Exportación de resultados en texto claro y formatos estructurados"
+    ],
+    "useCases": [
+      "Evaluación del riesgo por almacenamiento inseguro de credenciales en puestos de usuario",
+      "Simulación de amenazas internas en puestos corporativos"
+    ],
+    "requirements": [
+      "Python 3 o ejecutable compilado para Windows"
+    ],
+    "quickStartNote": "Ejecuta todos los módulos de recuperación de contraseñas para el usuario actual.",
+    "commands": [
+      {
+        "title": "Auditar contraseñas guardadas en el equipo",
+        "description": "Inspecciona navegadores y programas instalados en busca de credenciales almacenadas."
+      }
+    ]
+  },
+  "volatility-3": {
+    "tagline": "El framework de referencia de código abierto para análisis forense de memoria RAM.",
+    "description": "Volatility 3 es la reescritura completa de la plataforma de análisis forense de memoria más utilizada del mundo. Escrito en Python 3, extrae artefactos de imágenes crudas de memoria RAM, volcados por fallo y archivos de hibernación en sistemas Windows, Linux y macOS para analizar malware avanzado y rootkits.",
+    "capabilities": [
+      "Reconstrucción de procesos (pslist, pstree, psscan) identificando procesos ocultos o desvinculados",
+      "Inspección de conexiones de red activas (netscan, netstat) vinculando sockets a sus PIDs",
+      "Detección de inyecciones de código en memoria (malfind) identificando regiones VAD con permisos RWX",
+      "Extracción de ramas del registro y hashes de contraseñas directamente de estructuras del kernel"
+    ],
+    "useCases": [
+      "Respuesta a incidentes relacionados con malware 'fileless' y técnicas Living-off-the-Land",
+      "Detección de rootkits en modo kernel y recuperación de claves de cifrado en memoria volátil"
+    ],
+    "requirements": [
+      "Python 3.9+",
+      "pip",
+      "Imagen de memoria volátil (.raw, .vmem, .dmp)"
+    ],
+    "quickStartNote": "Muestra los procesos en ejecución capturados en la imagen de memoria de Windows.",
+    "commands": [
+      {
+        "title": "Identificar código inyectado en memoria",
+        "description": "Examina descriptores de direcciones virtuales (VAD) de procesos en busca de código ejecutable."
+      },
+      {
+        "title": "Reconstruir conexiones de red",
+        "description": "Extrae puertos TCP/UDP en escucha y conexiones remotas activas durante la captura."
+      }
+    ],
+    "outputExplained": "Salida windows.pslist: PID, PPID, ImageFileName, Offset(V), Threads, Handles, SessionId, Wow64, CreateTime, ExitTime. Compare pslist con psscan para descubrir procesos ocultos por malware.",
+    "troubleshooting": [
+      {
+        "issue": "Falta la tabla de símbolos para la versión del kernel",
+        "resolution": "Descargue el paquete de símbolos oficial correspondiente a la compilación del sistema o use el repositorio de símbolos de Volatility."
+      }
+    ]
+  },
+  "autopsy": {
+    "tagline": "Plataforma gráfica de análisis forense digital y examen de imágenes de disco.",
+    "description": "Autopsy es la interfaz gráfica de referencia para la biblioteca The Sleuth Kit (TSK). Empleada por fuerzas del orden, peritos judiciales y analistas de ciberseguridad, realiza exámenes forenses completos sobre discos duros, imágenes forenses y soportes extraíbles.",
+    "capabilities": [
+      "Análisis de sistemas de archivos (NTFS, FAT, ext2/3/4, APFS) y recuperación de ficheros borrados",
+      "Extracción automatizada de historial web, cookies, correos electrónicos y metadados",
+      "Línea de tiempo gráfica para reconstruir cronológicamente las acciones del usuario",
+      "Arquitectura extensible con módulos de aprendizaje automático y coincidencia de hashes conocidos"
+    ],
+    "useCases": [
+      "Peritaje informático forense en procesos judiciales con cadena de custodia",
+      "Investigación de incidentes de seguridad y generación de informes periciales oficiales"
+    ],
+    "requirements": [
+      "Java 17+",
+      "Windows, Linux o macOS"
+    ],
+    "quickStartNote": "Abra Autopsy y cree un nuevo caso para importar la imagen forense de disco (.e01 o .dd)."
+  },
+  "exiftool": {
+    "tagline": "Librería y CLI independiente de plataforma para lectura, escritura y edición de metadados.",
+    "description": "ExifTool, desarrollado por Phil Harvey, es la utilidad definitiva para el análisis de metadados de archivos. Permite leer, modificar y escribir metadados en cientos de formatos (EXIF, IPTC, XMP, JFIF, GeoTIFF, ICC Profile, ID3), revelando números de serie de cámaras, coordenadas GPS, marcas temporales y datos de software.",
+    "capabilities": [
+      "Lectura de metadados en imágenes (JPEG, TIFF, PNG), documentos (PDF, DOCX), audio y vídeo",
+      "Extracción de coordenadas GPS (latitud, longitud, altitud) y marcas de tiempo para geolocalización",
+      "Eliminación completa de metadados de archivos antes de su publicación en internet (-all=)",
+      "Extracción de miniaturas incrustadas y notas de fabricante de cámaras fotográficas"
+    ],
+    "useCases": [
+      "Análisis forense de fotografías, documentos y grabaciones aportados en investigaciones",
+      "Eliminación de metadados por seguridad operativa (OPSEC) previa a la difusión de informes"
+    ],
+    "requirements": [
+      "Perl 5.004 o superior (instalado de serie en casi todos los sistemas UNIX)"
+    ],
+    "quickStartNote": "Muestra todas las etiquetas de metadados EXIF, XMP e IPTC incrustadas en el fichero.",
+    "commands": [
+      {
+        "title": "Extraer coordenadas GPS y modelo de cámara",
+        "description": "Obtiene la ubicación geográfica y el modelo de dispositivo registrado en la fotografía."
+      },
+      {
+        "title": "Eliminar todos los metadados de imágenes del directorio",
+        "description": "Borra todas las etiquetas EXIF para proteger la privacidad del analista."
+      }
+    ]
+  },
+  "velociraptor": {
+    "tagline": "Plataforma avanzada de monitorización de endpoints, caza de amenazas y respuesta a incidentes.",
+    "description": "Velociraptor es una solución ágil de visibilidad de endpoints y triaje forense. Mediante el lenguaje declarativo VQL (Velociraptor Query Language), los analistas de DFIR pueden consultar miles de equipos simultáneamente para recolectar evidencias y buscar indicadores de compromiso.",
+    "capabilities": [
+      "Lenguaje de consulta VQL para diseñar análisis forenses y búsquedas personalizadas",
+      "Recolección rápida de artefactos en parques masivos de ordenadores distribuidos",
+      "Monitorización continua de eventos del sistema operativo en tiempo real",
+      "Comunicaciones seguras y cifradas entre agentes y el servidor central"
+    ],
+    "useCases": [
+      "Caza proactiva de amenazas (Threat Hunting) en grandes redes corporativas",
+      "Triaje forense y recolección rápida de evidencias en intrusiones activas"
+    ],
+    "requirements": [
+      "Binario autónomo para Linux, Windows o macOS"
+    ],
+    "quickStartNote": "Inicia la consola de administración local de Velociraptor en el puerto 8889.",
+    "commands": [
+      {
+        "title": "Iniciar consola gráfica local",
+        "description": "Abre la consola web local para probar y desarrollar artefactos VQL."
+      }
+    ]
+  },
+  "kape": {
+    "tagline": "Herramienta de adquisición y procesamiento ultrarrápido de artefactos forenses digitales.",
+    "description": "KAPE (Kroll Artifact Parser and Extractor) es una herramienta esencial de triaje para Windows. Localiza, preserva y procesa en minutos los artefactos forenses de mayor valor (MFT, Registro, Registros de eventos, Prefetch) antes de realizar un volcado de disco completo.",
+    "capabilities": [
+      "Captura selectiva de evidencias forenses críticas con protección de acceso (VSS)",
+      "Procesamiento automatizado de artefactos a través de utilidades forenses integradas",
+      "Generación de informes consolidados en formatos CSV y texto estructurado"
+    ],
+    "useCases": [
+      "Triaje ágil en respuesta a incidentes cuando no es viable la clonación completa de discos",
+      "Estandarización de la toma de evidencias en incidentes con múltiples equipos afectados"
+    ],
+    "requirements": [
+      "Windows 7 / Server 2008 R2 o superior",
+      ".NET Framework 4.5+"
+    ],
+    "quickStartNote": "Ejecute gkape.exe para abrir la interfaz gráfica o utilice la línea de comandos kape.exe."
+  },
+  "docker-exploitation-framework": {
+    "tagline": "Entorno de laboratorio para auditoría de seguridad en contenedores y pruebas de escape.",
+    "description": "Docker Exploitation Framework es un entorno de pruebas para evaluar la seguridad de configuraciones en contenedores Docker y clústeres Kubernetes. Ayuda a detectar permisos excesivos, montajes inseguros de sockets (/var/run/docker.sock) y debilidades de aislamiento.",
+    "capabilities": [
+      "Detección de montajes de volúmenes de alto riesgo y configuraciones inseguras",
+      "Auditoría de capacidades del kernel asignadas a contenedores (CAP_SYS_ADMIN, etc.)",
+      "Comprobación de políticas de aislamiento de red y espacios de nombres (namespaces)"
+    ],
+    "useCases": [
+      "Auditoría de seguridad y endurecimiento (hardening) de entornos de contenedores",
+      "Ejercicios prácticos de laboratorio para validación de controles de aislamiento en contenedores"
+    ],
+    "requirements": [
+      "Docker Engine",
+      "Linux"
+    ],
+    "quickStartNote": "Ejecuta el contenedor de diagnóstico para revisar la configuración del host.",
+    "commands": [
+      {
+        "title": "Auditar capacidades y volúmenes montados",
+        "description": "Inspecciona permisos y montajes asignados al contenedor en ejecución."
+      }
+    ]
+  },
+  "gato": {
+    "tagline": "Herramienta de auditoría y prueba de seguridad para ejecutores auto-alojados de GitHub (Runners).",
+    "description": "Gato (Github Attack ToolKit), desarrollado por Praetorian, es una herramienta de auditoría para evaluar entornos de integración continua (CI/CD) en GitHub, identificando ejecutores (runners) auto-hospedados vulnerables y repositorios con permisos excesivos.",
+    "capabilities": [
+      "Enumeración de runners auto-hospedados en organizaciones y repositorios de GitHub",
+      "Detección de secretos expuestos y privilegios excesivos en tokens de flujos de trabajo de CI/CD",
+      "Orientación para equipos de seguridad en la aplicación de aislamiento estricto de pipelines"
+    ],
+    "useCases": [
+      "Auditoría de la postura de seguridad en cadenas de suministro de software (AppSec / CI/CD)",
+      "Verificación de controles de aislamiento en ejecutores de tareas de integración continua"
+    ],
+    "requirements": [
+      "Python 3.8+",
+      "pip",
+      "Token de acceso personal de GitHub"
+    ],
+    "quickStartNote": "Enumera los repositorios y ejecutores asociados a la organización objetivo.",
+    "commands": [
+      {
+        "title": "Auditar runners en una organización de GitHub",
+        "description": "Analiza los repositorios de la organización para detectar ejecutores auto-alojados y sus configuraciones."
+      }
+    ]
+  }
+}

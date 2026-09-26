@@ -1,0 +1,172 @@
+{
+  "domain-intelligence": {
+    "title": "Inteligencia de Dominios y Reconocimiento de Superficie de Ataque",
+    "discipline": "Reconocimiento & OSINT",
+    "summary": "Pipeline progresivo de mapeo de dominio (pasivo a activo) para identificar activos perimetrales sin contacto prematuro.",
+    "description": "Este flujo de trabajo detalla cómo los analistas parten de un dominio autorizado y descubren sistemáticamente la infraestructura relacionada mediante transparencia de certificados, agregadores de búsqueda y correlación DNS.",
+    "methodology": "Reconocimiento por fases: comience con fuentes OSINT estrictamente pasivas para evitar alertas, correlacione los datos en grafos y valide la telemetría pública sin escaneos invasivos.",
+    "steps": [
+      {
+        "stage": "01. Recolección Pasiva en Buscadores",
+        "description": "Agregue registros públicos, resultados de motores de búsqueda, puntos de contacto de empleados y registros de hosts virtuales.",
+        "dataOutput": "Menciones al dominio, formatos de correo institucional y referencias iniciales a proveedores de servicios.",
+        "authorizedScope": "Totalmente pasivo. Ningún paquete enviado a la infraestructura objetivo."
+      },
+      {
+        "stage": "02. Enumeración Rápida de Subdominios",
+        "description": "Consulte proveedores de DNS pasivo, logs de transparencia de certificados (CT) y fuentes de Threat Intel para descubrir subdominios.",
+        "dataOutput": "Lista de nombres de dominio totalmente cualificados (FQDN) válidos.",
+        "authorizedScope": "Consultas pasivas a proveedores públicos de registros."
+      },
+      {
+        "stage": "03. Mapeo de Red en Grafos",
+        "description": "Correlacione los subdominios descubiertos con asignaciones de ASN, rangos IP, punteros inversos de DNS y registros de titularidad.",
+        "dataOutput": "Grafo estructurado de infraestructura mapeando subdominios con sistemas autónomos y bloques IP.",
+        "authorizedScope": "Consultas pasivas y resolución DNS autorizada."
+      },
+      {
+        "stage": "04. Descubrimiento Recursivo de Activos",
+        "description": "Ejecute mapeo recursivo de activos en buckets de almacenamiento en la nube, redirecciones abiertas y servicios perimetrales.",
+        "dataOutput": "Mapa completo de activos incluyendo recursos cloud, aplicaciones web y servicios de red.",
+        "authorizedScope": "Únicamente alcance verificado y autorizado."
+      },
+      {
+        "stage": "05. Telemetría Histórica y Exposición",
+        "description": "Cruce direcciones IP y nombres de host con el índice global de sensores de Shodan para inspeccionar banners históricos y CVEs conocidos.",
+        "dataOutput": "Perfiles de puertos expuestos, banners de servicio históricos, certificados SSL y protocolos abiertos.",
+        "authorizedScope": "Consultas en la base de telemetría preindexada de Shodan."
+      }
+    ],
+    "defensiveMitigation": "Los defensores deben monitorizar logs de transparencia de certificados en tiempo real (ej. Certspotter/Certstream), auditar zonas DNS públicas contra CNAMEs huérfanos y mantener un inventario EASM continuo."
+  },
+  "network-discovery": {
+    "title": "Descubrimiento de Perímetro de Red y Auditoría de Servicios",
+    "discipline": "Seguridad de Red & Evaluación de Vulnerabilidades",
+    "summary": "Auditoría de red de alta eficiencia: desde barridos asíncronos rápidos de puertos hasta verificación profunda con scripts NSE y plantillas.",
+    "description": "Diseñado para entornos de laboratorio y revisiones de perímetro corporativo. Combina enumeración veloz de puertos con identificación precisa de protocolos y evaluación de fallos.",
+    "methodology": "Escaneo en dos fases: barridos SYN rápidos identifican puertos activos en grandes bloques CIDR, seguidos de identificación detallada de servicios y comprobación dirigida de CVEs.",
+    "steps": [
+      {
+        "stage": "01. Barrido Perimetral de Puertos",
+        "description": "Realice un barrido asíncrono inicial en los 65.535 puertos TCP para aislar equipos que responden en las subredes autorizadas.",
+        "dataOutput": "Lista de pares IP:puerto activos en todo el rango objetivo.",
+        "authorizedScope": "Red de pruebas explícitamente autorizada o bloque IP interno."
+      },
+      {
+        "stage": "02. Identificación de Servicios y Versiones",
+        "description": "Ejecute conexiones TCP precisas, negociación de protocolos, captura de banners y scripts estándar de Nmap (NSE) en puertos abiertos.",
+        "dataOutput": "Versiones detalladas de servicios, huellas de pila TCP/IP del sistema operativo y parámetros de protocolo.",
+        "authorizedScope": "Hosts objetivo confirmados como abiertos en la Fase 01."
+      },
+      {
+        "stage": "03. Auditoría Dirigida con Plantillas de Vulnerabilidad",
+        "description": "Ejecute plantillas dirigidas de Nuclei y scripts de vulnerabilidad de Nmap acordes a las versiones detectadas para verificar fallos sin parchear.",
+        "dataOutput": "Hallazgos de vulnerabilidades validados con niveles de severidad y referencias CVE.",
+        "authorizedScope": "Únicamente servicios y puertos identificados."
+      }
+    ],
+    "defensiveMitigation": "Implemente filtrado riguroso en firewalls, cierre puertos innecesarios, aplique acceso de confianza cero (ZTNA) y realice auditorías internas continuas de puertos."
+  },
+  "digital-forensics": {
+    "title": "Forense Digital Integral y Respuesta ante Incidentes (DFIR)",
+    "discipline": "Forense Digital & Respuesta a Incidentes",
+    "summary": "Clasificación forense completa en respuesta a incidentes: desde la extracción de memoria volátil hasta el análisis de artefactos de disco y cronología.",
+    "description": "Procedimiento operativo estándar para analistas forenses en equipos comprometidos. Combina recolección rápida de artefactos en vivo con análisis exhaustivo de memoria RAM y reconstrucción cronológica.",
+    "methodology": "Orden de Volatilidad: capture la memoria RAM primero antes de apagar o aislar el equipo. Extraiga artefactos críticos de triaje antes de la imagen completa de disco. Analice en entorno aislado para preservar la cadena de custodia.",
+    "steps": [
+      {
+        "stage": "01. Extracción de Memoria Volátil y Triaje de Procesos",
+        "description": "Capture la imagen de memoria RAM y analice procesos activos (pslist/pstree), conexiones de red (netscan) y regiones de memoria inyectadas (malfind).",
+        "dataOutput": "PIDs maliciosos identificados, desplazamientos de memoria inyectada, conexiones C2 y procesos ocultos de rootkits.",
+        "authorizedScope": "Host comprometido en la investigación de respuesta a incidentes."
+      },
+      {
+        "stage": "02. Procesamiento Rápido de Artefactos Forenses",
+        "description": "Recopile artefactos de alto valor de Windows (MFT, Registro, Registros de eventos, Prefetch, Amcache, Shimcache) con KAPE.",
+        "dataOutput": "Informes CSV de ejecuciones recientes, dispositivos USB montados, inicios de sesión y ficheros modificados.",
+        "authorizedScope": "Imagen forense o equipo bajo investigación."
+      },
+      {
+        "stage": "03. Inspección Estática de Malware y Binarios",
+        "description": "Extraiga binarios sospechosos y DLLs identificados en memoria para análisis estático de cabeceras y detección de anomalías.",
+        "dataOutput": "Importaciones de APIs sospechosas, entropía de secciones, firmas de compilador y mapeo MITRE ATT&CK.",
+        "authorizedScope": "Laboratorio forense aislado."
+      },
+      {
+        "stage": "04. Reconstrucción de Línea Temporal y Sistema de Ficheros",
+        "description": "Importe imágenes de disco en Autopsy para construir una cronología detallada relacionando actividad de usuario, historial web y modificaciones en el registro.",
+        "dataOutput": "Línea temporal cronológica completa del incidente mostrando vector inicial, movimiento lateral y exfiltración.",
+        "authorizedScope": "Imagen forense preservada de disco (E01/RAW)."
+      }
+    ],
+    "defensiveMitigation": "Habilite telemetría centralizada de endpoints (Sysmon/Wazuh), active registro de bloques de script en PowerShell, configure Windows Defender Credential Guard y aísle equipos sospechosos mediante contención de red."
+  },
+  "web-security-assessment": {
+    "title": "Evaluación de Seguridad en Aplicaciones Web y APIs",
+    "discipline": "Seguridad Web & Pruebas de Penetración",
+    "summary": "Evaluación estructurada de aplicaciones web: desde descubrimiento de rutas hasta fuzzing de parámetros, intercepción de tráfico y validación de fallos.",
+    "description": "Pruebas de seguridad metódicas para aplicaciones web y APIs REST/GraphQL en alcance autorizado. Avanza de forma sistemática desde el descubrimiento de superficie hacia la búsqueda de parámetros y pruebas autenticadas.",
+    "methodology": "Metodología Gray-Box: mapee endpoints públicos y autenticados, intercepte el tráfico HTTP, descubra parámetros ocultos y verifique controles de seguridad con plantillas personalizadas.",
+    "steps": [
+      {
+        "stage": "01. Descubrimiento de Rutas y Contenido",
+        "description": "Enumere directorios, endpoints de API no vinculados, copias de seguridad y paneles de administración con diccionarios de alto rendimiento.",
+        "dataOutput": "Jerarquía de URLs descubiertas, endpoints administrativos y ficheros estáticos desprotegidos.",
+        "authorizedScope": "Hostname de la aplicación web explícitamente autorizado."
+      },
+      {
+        "stage": "02. Intercepción de Tráfico y Manipulación de Peticiones",
+        "description": "Enrute el tráfico del navegador por un proxy de intercepción para examinar cabeceras, tokens de sesión y cargas de datos en APIs.",
+        "dataOutput": "Registro completo de transacciones HTTP/S con endpoints anotados y tokens de autenticación.",
+        "authorizedScope": "Aplicación objetivo dentro del alcance de pruebas."
+      },
+      {
+        "stage": "03. Fuzzing de Parámetros Ocultos",
+        "description": "Realice fuzzing sobre parámetros de consulta y JSON en endpoints críticos para descubrir parámetros de depuración, flags ocultas y puntos de inyección.",
+        "dataOutput": "Parámetros no documentados descubiertos y comportamiento de reflexión de datos.",
+        "authorizedScope": "Endpoints objetivo identificados en fases anteriores."
+      },
+      {
+        "stage": "04. Verificación Automatizada con Plantillas de Seguridad",
+        "description": "Ejecute plantillas de Nuclei orientadas a vulnerabilidades web (XSS, SQLi, SSRF, errores de CORS, librerías vulnerables) en los endpoints identificados.",
+        "dataOutput": "Hallazgos de vulnerabilidades validados con pasos de reproducción y evidencias HTTP.",
+        "authorizedScope": "Aplicación objetivo dentro del alcance de pruebas."
+      }
+    ],
+    "defensiveMitigation": "Implemente consultas parametrizadas a bases de datos, políticas estrictas de Content Security Policy (CSP), análisis automático de dependencias en CI/CD y cabeceras CORS seguras."
+  },
+  "active-directory-auditing": {
+    "title": "Auditoría de Active Directory e Higiene de Identidades",
+    "discipline": "Seguridad de Active Directory",
+    "summary": "Auditoría de seguridad de dominio: desde análisis de grafos de privilegios hasta verificación de higiene de credenciales y mitigación de movimiento lateral.",
+    "description": "Diseñado para auditorías corporativas internas. Identifica rutas imprevistas de delegación, permisos ACL excesivos, cuentas inactivas y protocolos débiles de autenticación en Active Directory local e híbrido (Entra ID).",
+    "methodology": "Defensa centrada en la identidad: mapee el grafo completo de permisos para encontrar rutas no evidentes hacia Domain Admin, verificando la higiene de credenciales sin alterar el estado del dominio.",
+    "steps": [
+      {
+        "stage": "01. Mapeo de Grafo de Permisos",
+        "description": "Recopile sesiones de dominio, ACLs y grupos para construir un grafo interactivo en Neo4j con todas las rutas de ataque hacia activos Tier 0.",
+        "dataOutput": "Grafo visual que identifica las rutas de ataque más cortas hacia Administradores de Dominio y grupos críticos.",
+        "authorizedScope": "Red corporativa del dominio autorizado."
+      },
+      {
+        "stage": "02. Verificación de Protocolos e Higiene de Credenciales",
+        "description": "Audite configuraciones de delegación Kerberos, cuentas de servicio vulnerables a Kerberoasting con SPNs débiles y políticas de autenticación.",
+        "dataOutput": "Inventario de equipos con delegación no restringida, cuentas vulnerables a Kerberoasting y tipos de cifrado débiles.",
+        "authorizedScope": "Dominio corporativo autorizado."
+      },
+      {
+        "stage": "03. Auditoría de Exposición de Credenciales en Memoria",
+        "description": "En equipos de laboratorio controlados, verifique si la protección de LSASS, Credential Guard y Restricted Admin impiden con éxito el volcado de contraseñas.",
+        "dataOutput": "Verificación de la efectividad de las protecciones de credenciales de endpoint frente a volcado de memoria.",
+        "authorizedScope": "Únicamente estaciones de trabajo de prueba designadas."
+      },
+      {
+        "stage": "04. Prueba de Robustez de Contraseñas y Políticas",
+        "description": "Realice una auditoría offline de fortaleza de contraseñas sobre hashes extraídos del dominio para identificar claves compartidas, débiles o comprometidas.",
+        "dataOutput": "Informe de cumplimiento de directivas de contraseñas y patrones comunes de debilidad sin revelar contraseñas en texto claro.",
+        "authorizedScope": "Auditoría offline autorizada del volcado de hashes del dominio."
+      }
+    ],
+    "defensiveMitigation": "Implemente el modelo de administración por niveles (Tier 0/1/2), elimine delegaciones Kerberos no restringidas, aplique el grupo Protected Users para cuentas privilegiadas y despliegue Windows Defender Credential Guard."
+  }
+}

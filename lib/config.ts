@@ -1,0 +1,26 @@
+export const appConfig = {
+  name: "OBSIDIAN",
+  subtitle: "Cyber Intelligence Arsenal",
+  statement: "Security intelligence, tools, workflows, and knowledge — unified.",
+  description: "A high-precision cybersecurity intelligence platform and operational toolkit for security researchers, analysts, DFIR specialists, and defenders.",
+  version: "1.4.0",
+  repository: "https://github.com/obsidian-cyber/arsenal",
+  documentationVerificationNotice: "Official project repositories and release documentation are verified periodically. Verify commands against upstream releases before deployment in production environments.",
+  authorizedUsePolicy: "Tools cataloged within OBSIDIAN are intended strictly for defensive security operations, forensics, academic research, CTF challenges, and authorized security assessments on infrastructure owned or formally permitted by the testing team.",
+  nav: [
+    { label: "Overview", href: "/", icon: "LayoutDashboard" },
+    { label: "Arsenal", href: "/tools", icon: "Boxes" },
+    { label: "Categories", href: "/categories", icon: "FolderGit2" },
+    { label: "Workflows", href: "/workflows", icon: "GitFork" },
+    { label: "Relationship Map", href: "/arsenal/map", icon: "Share2" },
+    { label: "Native Utilities", href: "/utilities", icon: "Wrench" },
+    { label: "Favorites", href: "/favorites", icon: "Star" },
+    { label: "Recent", href: "/recent", icon: "Clock" },
+  ],
+  secondaryNav: [
+    { label: "Search", href: "/search", icon: "Search" },
+    { label: "Authorized Use", href: "/authorized-use", icon: "ShieldCheck" },
+    { label: "About", href: "/about", icon: "Info" },
+    { label: "Settings", href: "/settings", icon: "SlidersHorizontal" },
+  ],
+};

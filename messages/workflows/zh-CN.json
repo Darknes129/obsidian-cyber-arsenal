@@ -1,0 +1,172 @@
+{
+  "domain-intelligence": {
+    "title": "域名情报收集与外部攻击面测绘",
+    "discipline": "侦察与开源情报",
+    "summary": "渐进式（由被动至主动）域名资产映射流水线，在避免过早触碰目标的前提下厘清外网边界资产清单。",
+    "description": "本工作流规范了分析人员如何从合法授权的根域名入手，借助证书透明度日志、聚合搜索引擎、DNS递归解析与资产清单数据流，系统性摸排关联的网络基础设施。",
+    "methodology": "分阶段侦察策略：优先采用纯被动OSINT渠道以防触发目标告警，随后在图数据库中关联聚合，最后在不发送高危探测包的前提下校验互联网存活遥测数据。",
+    "steps": [
+      {
+        "stage": "01. 搜索引擎与公开记录被动抓取",
+        "description": "聚合公开索引记录、主要搜索引擎检索结果、公开的企业员工联络方式以及虚拟主机解析线索。",
+        "dataOutput": "原始域名提及记录、企业员工邮箱命名规则以及初步第三方云服务商引用信息。",
+        "authorizedScope": "完全被动收集。严禁向目标资产直接发送任何网络探测数据包。"
+      },
+      {
+        "stage": "02. 高速子域名枚举",
+        "description": "查询被动DNS服务商、证书透明度（CT）公开日志库以及威胁情报源以发现关联子域名。",
+        "dataOutput": "有效且结构完整的完全限定域名（FQDN）列表清单。",
+        "authorizedScope": "仅向公开公共日志数据库发起被动查询。"
+      },
+      {
+        "stage": "03. 基于拓扑图的网络映射",
+        "description": "将发现的子域名与自治系统号（ASN）分配、公网IP段、反向DNS指针及归属机构进行拓扑关联。",
+        "dataOutput": "将子域名精准映射至自治系统与公网IP网段的结构化网络拓扑图谱。",
+        "authorizedScope": "仅限被动查询及经授权的常规DNS正反向解析。"
+      },
+      {
+        "stage": "04. 递归式资产暴露面测绘",
+        "description": "在经核实的授权测试范围内，对云端对象存储桶、开放重定向、虚拟主机及外网边界服务展开递归测绘。",
+        "dataOutput": "涵盖云端基础设施、Web应用系统与网络边界端口的全面资产台账。",
+        "authorizedScope": "严格限定在已获书面授权验证的目标测试范围之内。"
+      },
+      {
+        "stage": "05. 历史遥测数据与暴露面核查",
+        "description": "将目标IP地址与主机名与Shodan全球传感器历史索引进行交叉比对，排查历史Banner与已知CVE暴露。",
+        "dataOutput": "开放端口分布特征、历史服务响应Banner、SSL证书指纹及公网开放协议清单。",
+        "authorizedScope": "仅向Shodan预先索引的离线遥测数据库发起检索。"
+      }
+    ],
+    "defensiveMitigation": "防守方应配置证书透明度（CT）日志的实时告警监控，定期审计公共DNS解析区以防泛解析或孤儿CNAME劫持，并保持常态化外部攻击面管理（EASM）。"
+  },
+  "network-discovery": {
+    "title": "网络外围资产探测与开放服务安全审计",
+    "discipline": "网络安全与漏洞评估",
+    "summary": "高能效网络安全审计流程：涵盖从极速异步全端口拉网普查，到深层NSE指纹识别与漏洞模板比对验证。",
+    "description": "专为授权靶场实验网络及企业内部网络边界合规巡检而设计。融合了高速异步全端口扫描、高精度协议版本指纹识别以及模板驱动的漏洞实证技术。",
+    "methodology": "双阶段递进式扫描：首先以高发包速率发送原始SYN数据包在整个CIDR网段快速定位存活端口，随后针对开放端口实施低速率状态化服务识别与定向CVE模板验证。",
+    "steps": [
+      {
+        "stage": "01. 网络边界端口普查",
+        "description": "对授权网段内的全量65,535个TCP端口发起快速异步扫描，排查出具备网络响应的主机终结点。",
+        "dataOutput": "目标网段内所有存活的 IP:端口 键值对清单。",
+        "authorizedScope": "经书面明确授权的测试网络或内部IP网段。"
+      },
+      {
+        "stage": "02. 状态化服务与运行版本指纹识别",
+        "description": "对已识别的开放端口执行完整TCP握手、协议协商、Banner抓取并加载Nmap默认安全脚本（NSE）。",
+        "dataOutput": "详尽的应用服务具体版本、操作系统TCP/IP协议栈指纹以及底层协议参数。",
+        "authorizedScope": "仅限在第01阶段明确确认为开放状态的目标主机与端口。"
+      },
+      {
+        "stage": "03. 定向漏洞模板合规性复核",
+        "description": "根据检测出的具体软件版本，定向加载Nuclei对应漏洞模板及Nmap vuln分类脚本，核验已知高危缺陷是否存在。",
+        "dataOutput": "附带严重级别评级与标准CVE编号的已核实验证报告。",
+        "authorizedScope": "仅限已定位的特定网络服务与端口。"
+      }
+    ],
+    "defensiveMitigation": "严格部署防火墙出入站双向访问控制策略，关闭一切非必需端口，落地零信任网络访问架构（ZTNA），并推行定期的内网端口连通性安全抽检。"
+  },
+  "digital-forensics": {
+    "title": "全面数字化取证与安全事件应急响应（DFIR）",
+    "discipline": "数字取证与应急响应",
+    "summary": "端到端事件响应取证作业流程：从易失性物理内存镜像提取，到静态磁盘关键痕迹排查与全景时间线还原。",
+    "description": "面向被入侵受害主机的标准化电子数据鉴定与取证流程。兼顾了内存取证的即时性、关键痕迹提取的敏捷性，以及离线文件系统时间线的严密重构。",
+    "methodology": "依据易失性优先次序（Order of Volatility）：在断电或网络物理隔离前优先采集RAM物理内存镜像；在全盘克隆镜像前快速提取高价值分类痕迹；全流程实施离线分析以确保证据链完整。",
+    "steps": [
+      {
+        "stage": "01. 易失性物理内存采集与进程初筛",
+        "description": "完整采集物理RAM镜像并分析正在运行的系统进程树（pslist/pstree）、活跃网络连接套接字（netscan）及内存注入代码段（malfind）。",
+        "dataOutput": "识别出的恶意进程PID、内存注入偏移量、C2回连网络地址以及被断链隐匿的Rootkit。",
+        "authorizedScope": "处于应急响应立案调查中的涉案失陷主机。"
+      },
+      {
+        "stage": "02. 关键取证痕迹快速分流提取",
+        "description": "利用KAPE快速提取Windows核心高价值痕迹文件（包括MFT、系统配置单元、事件日志、Prefetch、Amcache与Shimcache）。",
+        "dataOutput": "涵盖近期程序执行、外接USB设备记录、用户登录时间及文件篡改行为的结构化CSV报表。",
+        "authorizedScope": "正在接受调查的案涉证据介质或在线受害终端。"
+      },
+      {
+        "stage": "03. 落地样本与恶意程序静态分析",
+        "description": "从内存转储或磁盘痕迹中提取可疑二进制程序与DLL模块，进行PE头部解析与反常特征排查。",
+        "dataOutput": "可疑API导入函数列表、文件节区熵值评分、编译器特征以及映射的MITRE ATT&CK技术编号。",
+        "authorizedScope": "受控且物理隔离的安全实验室环境。"
+      },
+      {
+        "stage": "04. 深入文件系统与全景时间线重构",
+        "description": "将磁盘镜像导入Autopsy中构建全局时间线，交叉关联用户桌面操作、浏览器浏览记录、文件下载及注册表改动。",
+        "dataOutput": "清晰展示初始入侵点、内网横向移动与核心数据外发全过程的完整时间线分析卷宗。",
+        "authorizedScope": "依照证据链规范固定封存的法医磁盘镜像文件（E01/RAW）。"
+      }
+    ],
+    "defensiveMitigation": "部署中心化终端遥测日志采集方案（如Sysmon/Wazuh），开启PowerShell脚本块详细审核，启用Credential Guard凭据防泄漏保护，并在发现异常时即刻实施网络围堵隔离。"
+  },
+  "web-security-assessment": {
+    "title": "Web应用系统与API接口安全性深度评估",
+    "discipline": "Web安全与渗透测试",
+    "summary": "结构化Web安全测试工作流：从路由目录发现到隐藏参数模糊测试、抓包流量篡改及安全漏洞深度核验。",
+    "description": "在明确的书面授权测试框架内，针对Web应用程序和REST/GraphQL接口展开方法论指导下的安全性评估。遵循从暴露面测绘到参数深度挖掘，再到受控身份认证测试的严谨路径。",
+    "methodology": "灰盒测试方法体系：系统梳理公开和已认证的所有功能端点，拦截审查双向HTTP流量交互，挖掘未公开的隐藏参数，并依托定制模板验证安全机制是否健全。",
+    "steps": [
+      {
+        "stage": "01. 网站路由与隐藏资源探测",
+        "description": "借助高并发词典爆破探测未公开的接口路径、备份文件、开发遗留文档及内部管理后台。",
+        "dataOutput": "已发现的URL路径层级树、管理员后台接口及未授权即可访问的静态资源清单。",
+        "authorizedScope": "经明确书面授权的目标Web应用系统域名或IP。"
+      },
+      {
+        "stage": "02. 网络流量拦截与数据包动态重放",
+        "description": "将浏览器及自动化脚本流量导入中间拦截代理，深入解构请求头部、会话Token与API负载数据体。",
+        "dataOutput": "标注有敏感接口、鉴权凭据及数据流走向的完整HTTP/S交互历史日志。",
+        "authorizedScope": "测试合同授权范围内的目标Web应用。"
+      },
+      {
+        "stage": "03. 隐藏输入参数模糊测试",
+        "description": "针对敏感业务接口的查询参数与JSON报文执行模糊测试，挖掘未公开的调试参数、特权标识或注入漏洞点。",
+        "dataOutput": "挖掘出的未公开隐藏参数名称及其输入反射反馈特征。",
+        "authorizedScope": "在前序阶段梳理出的关键业务API与表单接口。"
+      },
+      {
+        "stage": "04. 自动化漏洞安全模板交叉复核",
+        "description": "针对已识别的资产端点，加载针对Web高危漏洞（XSS、SQLi、SSRF、CORS错误配置等）的Nuclei模板展开测试。",
+        "dataOutput": "附带复现步骤与完整HTTP PoC证明数据的已验证漏洞报告。",
+        "authorizedScope": "测试合同授权范围内的目标Web应用。"
+      }
+    ],
+    "defensiveMitigation": "实施数据库参数化查询彻底杜绝SQL注入，制定严格的Content Security Policy（CSP）防护策略，在CI/CD流水线中植入开源组件依赖安全扫描，并规范CORS跨域策略。"
+  },
+  "active-directory-auditing": {
+    "title": "Active Directory域架构与特权身份合规审计",
+    "discipline": "Active Directory安全",
+    "summary": "企业域环境安全审计规范：涵盖从图论特权拓扑分析到凭据存储卫生检查以及横向移动缓解防范。",
+    "description": "专为企业内部安全审计设计。深入排查本地Active Directory域以及混合云Entra ID中潜藏的意外委托路径、过宽的访问控制列表（ACL）、废弃特权账号以及不安全的弱加密认证协议。",
+    "methodology": "以身份为核心的防御思想：构建完整的域信任与权限拓扑图谱，发现通往域管权限的最短攻击跳板，并在完全不干扰破坏域环境正常运行的前提下评估凭据安全态势。",
+    "steps": [
+      {
+        "stage": "01. 权限拓扑图谱构建",
+        "description": "采集域内活动会话、ACL访问控制项及安全组成员拓扑，并在Neo4j中生成通向Tier 0特权资产的交互式攻击路径图。",
+        "dataOutput": "直观展示通往Domain Admins域管及核心敏感特权组最短跃迁路径的可视化拓扑图谱。",
+        "authorizedScope": "获正式授权的企业内部域网络环境。"
+      },
+      {
+        "stage": "02. 认证协议与服务账号凭据审计",
+        "description": "系统审计Kerberos委派配置，排查注册了弱SPN且容易遭受Kerberoasting攻击的服务账号，核查加密套件合规性。",
+        "dataOutput": "配置了非受限委派的主机清单、易受Kerberoasting攻击的账号以及过时弱加密算法汇总。",
+        "authorizedScope": "经授权的企业生产或测试域环境。"
+      },
+      {
+        "stage": "03. 内存驻留凭据暴露面排查",
+        "description": "在受控测试工作站上验证LSASS进程保护、Credential Guard及受限管理员模式（Restricted Admin）是否能有效阻断密码抓取。",
+        "dataOutput": "关于终端身份凭据防护机制抵御LSASS内存提取能力的实测评估报告。",
+        "authorizedScope": "严格限定在预先指定的专用测试工作站上。"
+      },
+      {
+        "stage": "04. 口令策略合规性与离线强度校验",
+        "description": "在离线环境中对安全导出的域密码哈希开展强度碰撞校验，识别企业内部广泛存在的弱口令、通用口令及泄露口令。",
+        "dataOutput": "在不暴露明文密码的前提下，生成关于密码策略合规率、弱密码占比及规律性弱口令分布的统计审计报告。",
+        "authorizedScope": "经过专门审批的域哈希离线合规性安全审计。"
+      }
+    ],
+    "defensiveMitigation": "坚决推行特权分层管理模型（Tier 0/1/2），彻底消除非受限Kerberos委派配置，将特权管理账号强制纳入Protected Users安全组，并全员普及部署Windows Defender Credential Guard。"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "OBSIDIAN - Cyber Intelligence Arsenal",
+  "description": "Security intelligence, tools, workflows, and knowledge — unified. A high-precision cybersecurity intelligence platform and toolkit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
